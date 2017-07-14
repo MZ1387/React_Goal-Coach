@@ -14,13 +14,11 @@ class GoalList extends Component {
         const serverKey = goal.key;
         goals.push({ email, title, serverKey });
       })
-      console.log('Goals:', goals);
       this.props.setGoals(goals);
     })
   }
 
   render() {
-    console.log('this.props.goals', this.props.goals);
     return (
       <div>
         {this.props.goals.map((goal, index) => {
