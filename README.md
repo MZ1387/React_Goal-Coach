@@ -6,6 +6,7 @@ A simple application that allows users to challenge one another to complete a ta
 
 - React
 - Redux
+- React Router
 - Firebase
 - Authentication
 
