@@ -13,4 +13,3 @@ A simple application that allows users to challenge one another to complete a ta
 
 - Authentication using Firebase
 - Creating multiple user
-# React_Goal-Coach
