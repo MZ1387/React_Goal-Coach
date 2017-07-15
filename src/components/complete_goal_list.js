@@ -10,7 +10,8 @@ class CompleteGoalList extends Component {
       let completeGoals = [];
       snap.forEach(completeGoal => {
         const { email, title } = completeGoal.val();
-        completeGoals.push({email, title});
+        const serverKey = completeGoal.key;
+        completeGoals.push({ email, title, serverKey });
       })
       this.props.setCompleted(completeGoals);
     })
@@ -20,15 +21,26 @@ class CompleteGoalList extends Component {
     completeGoalRef.set([]);
   }
 
+  clearGoal(serverKey) {
+    completeGoalRef.child(serverKey).remove();
+  }
+
   render() {
     return (
       <div>
         {
           this.props.completeGoals.map((completeGoal, index) => {
-            const { title, email } = completeGoal;
+            console.log(completeGoal);
+            const { title, email, serverKey } = completeGoal;
             return (
               <div key={index} style={{margin: '5px'}}>
-                <strong style={{marginRight: '5px'}}>{title}</strong> | Completed by: <em>{email}</em>
+                <strong style={{marginRight: '5px'}}>{title}</strong> | Completed by: <em style={{marginRight: '5px'}}>{email}</em>
+                <button
+                  className='btn btn-sm btn-primary'
+                  onClick={() => this.clearGoal(serverKey)}
+                >
+                  Remove
+                </button>
               </div>
             )
           })
